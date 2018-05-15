@@ -1,0 +1,112 @@
+%description: Book template
+
+% template of document for LaTeX
+% (C) Xavier Perseguers 2002 - xavier.perseguers@epfl.ch
+
+% ================================================================
+% PREAMBLE
+% ================================================================
+
+\include{TexFiles/Preamble}
+
+% ================================================================
+% TOP MATTER
+% ================================================================
+
+\include{TexFiles/Top_Matter}
+
+% ================================================================
+% DOCUMENT
+% ================================================================
+
+\begin{document}
+
+\maketitle						% generate the title
+
+\frontmatter
+
+\tableofcontents					% generate a table of contents
+%\listoffigures					% generate a list  of figures
+%\listoftables					        % generate a list of tables
+
+\mainmatter
+
+% ================================================================
+% Abstract - Foreword
+% ================================================================
+
+\subfile{TexFiles/Chapters/Abstracts_Foreword}
+
+% ================================================================
+% INTRODUCTION
+% ================================================================
+
+\subfile{TexFiles/Chapters/Introduction}
+
+% ================================================================
+% CHAPTERS
+% ================================================================
+
+\subfile{TexFiles/Chapters/Chap_Model_Basics}
+
+\subfile{TexFiles/Chapters/Chap_STP}			% Time discretisation (time stepping strategy)
+
+\subfile{TexFiles/Chapters/Chap_DOM}			% Space discretisation
+
+\subfile{TexFiles/Chapters/Chap_TRA}			% Tracer advection/diffusion equation
+
+\subfile{TexFiles/Chapters/Chap_DYN}			% Dynamics : momentum equation
+
+\subfile{TexFiles/Chapters/Chap_SBC}			% Surface Boundary Conditions
+
+\subfile{TexFiles/Chapters/Chap_LBC}			% Lateral Boundary Conditions
+
+\subfile{TexFiles/Chapters/Chap_LDF}			% Lateral diffusion
+
+\subfile{TexFiles/Chapters/Chap_ZDF}			% Vertical diffusion
+
+\subfile{TexFiles/Chapters/Chap_DIA}			% Outputs and Diagnostics
+
+\subfile{TexFiles/Chapters/Chap_OBS}                    % Observation operator
+
+\subfile{TexFiles/Chapters/Chap_ASM}                    % Assimilation increments
+
+\subfile{TexFiles/Chapters/Chap_STO}                    % Stochastic param.
+
+\subfile{TexFiles/Chapters/Chap_MISC}			% Miscellaneous topics
+
+\subfile{TexFiles/Chapters/Chap_CFG}			% Predefined configurations
+
+% ================================================================
+% APPENDIX
+% ================================================================
+
+\appendix
+
+%\subfile{TexFiles/Chapters/Chap_Conservation}
+\subfile{TexFiles/Chapters/Annex_A}			% generalised vertical coordinate
+\subfile{TexFiles/Chapters/Annex_B}			% diffusive operator
+\subfile{TexFiles/Chapters/Annex_C}			% Discrete invariants of the eqs.
+\subfile{TexFiles/Chapters/Annex_ISO}	                  % Isoneutral diffusion using triads
+\subfile{TexFiles/Chapters/Annex_D}			% Coding rules
+%\subfile{TexFiles/Chapters/Annex_E}	                  % Notes on some on going staff (no included in the DOC)
+%\subfile{TexFiles/Chapters/Annex_Fox-Kemper}   % Notes on Fox-Kemper (no included in the DOC)
+%\subfile{TexFiles/Chapters/Annex_EVP}        	% Notes on EVP (no included in the DOC)
+
+% ================================================================
+% INDEX
+% ================================================================
+
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+% ================================================================
+% BIBLIOGRAPHY
+% ================================================================
+
+%%\bibliographystyle{plainat}
+\bibliographystyle{TexFiles/Styles/ametsoc}		% AMS biblio style (JPO)
+\bibliography{TexFiles/Bibliography/Biblio}
+
+% ================================================================
+\end{document}
