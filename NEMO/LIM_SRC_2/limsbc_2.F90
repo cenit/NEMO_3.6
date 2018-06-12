@@ -406,8 +406,8 @@ CONTAINS
          DO jj = 2, jpjm1                             !* ice stress over ocean WITHOUT a ice-ocean rotation angle
             DO ji = fs_2, fs_jpim1
                !                                            ! ocean area at u- & v-points
-               zfrldu  = 0.5_wp * ( frld(ji,jj) + frld(ji+1,jj) )
-               zfrldv  = 0.5_wp * ( frld(ji,jj) + frld(ji,jj+1) )
+               zfrldu  = ( frld(ji,jj) * tmask(ji,jj) + frld(ji+1,jj) * tmask(ji+1,jj  ) ) / MAX(1.0_wp,tmask(ji,jj)+tmask(ji+1,jj  ))
+               zfrldv  = ( frld(ji,jj) * tmask(ji,jj) + frld(ji,jj+1) * tmask(ji  ,jj+1) ) / MAX(1.0_wp,tmask(ji,jj)+tmask(ji  ,jj+1))
                !                                            ! quadratic drag formulation without rotation
                !                                            ! using instantaneous surface ocean current
                zutau_ice = 0.5 * ( tmod_io(ji,jj) + tmod_io(ji+1,jj) ) * ( u_ice(ji,jj) - pu_oce(ji,jj) )
