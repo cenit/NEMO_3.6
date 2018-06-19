@@ -57,6 +57,7 @@ MODULE bdydta
 #if defined key_lim3
    LOGICAL :: ll_bdylim3                  ! determine whether ice input is lim2 (F) or lim3 (T) type
    INTEGER :: jfld_hti, jfld_hts, jfld_ai ! indices of ice thickness, snow thickness and concentration in bf structure
+   INTEGER, DIMENSION(jp_bdy) :: jfld_htit, jfld_htst, jfld_ait ! indices of ice thickness, snow thickness and concentration in bf structure
 #endif
 
 #  include "domzgr_substitute.h90"
@@ -379,6 +380,9 @@ CONTAINS
                ENDIF
 #if defined key_lim3
                IF( .NOT. ll_bdylim3 .AND. cn_ice_lim(ib_bdy) /= 'none' .AND. nn_ice_lim_dta(ib_bdy) == 1 ) THEN ! bdy ice input (case input is lim2 type)
+                  jfld_hti = jfld_htit(ib_bdy)
+                  jfld_hts = jfld_htst(ib_bdy)
+                  jfld_ai  = jfld_ait(ib_bdy)
      	          CALL lim_var_itd ( bf(jfld_hti)%fnow(:,1,1), bf(jfld_hts)%fnow(:,1,1), bf(jfld_ai)%fnow(:,1,1), &
                                   & dta_bdy(ib_bdy)%ht_i,     dta_bdy(ib_bdy)%ht_s,     dta_bdy(ib_bdy)%a_i     )
                ENDIF
@@ -877,9 +881,9 @@ CONTAINS
                   jfld = jfld + 1
                   dta_bdy(ib_bdy)%ht_s => bf(jfld)%fnow(:,1,:)
                ELSE ! case input is lim2 type
-                  jfld_ai  = jfld + 1
-                  jfld_hti = jfld + 2
-                  jfld_hts = jfld + 3
+                  jfld_ait(ib_bdy)  = jfld + 1
+                  jfld_htit(ib_bdy) = jfld + 2
+                  jfld_htst(ib_bdy) = jfld + 3
                   jfld     = jfld + 3
                   ALLOCATE( dta_bdy(ib_bdy)%a_i (nblen(1),jpl) )
                   ALLOCATE( dta_bdy(ib_bdy)%ht_i(nblen(1),jpl) )
