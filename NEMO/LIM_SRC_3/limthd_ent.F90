@@ -114,7 +114,7 @@ CONTAINS
 
       zqh_cum1(:,0:nlay_i) = 0._wp 
       ! new cumulative q*h => linear interpolation
-      DO jk0 = 1, nlay_i+1
+      DO jk0 = 1, nlay_i+2
          DO jk1 = 1, nlay_i-1
             DO ji = kideb, kiut
                IF( zh_cum1(ji,jk1) <= zh_cum0(ji,jk0) .AND. zh_cum1(ji,jk1) > zh_cum0(ji,jk0-1) ) THEN
