@@ -268,16 +268,16 @@ CONTAINS
          !-------------------------------------------
          ! Recover the properties from their contents
          !-------------------------------------------
-         ato_i(:,:) = z0opw(:,:,1) * r1_e12t(:,:)
+         ato_i(:,:) = z0opw(:,:,1) * r1_e12t(:,:) * tmask(:,:,1)
          DO jl = 1, jpl
-            v_i  (:,:,jl)   = z0ice(:,:,jl) * r1_e12t(:,:)
-            v_s  (:,:,jl)   = z0snw(:,:,jl) * r1_e12t(:,:)
-            smv_i(:,:,jl)   = z0smi(:,:,jl) * r1_e12t(:,:)
-            oa_i (:,:,jl)   = z0oi (:,:,jl) * r1_e12t(:,:)
-            a_i  (:,:,jl)   = z0ai (:,:,jl) * r1_e12t(:,:)
-            e_s  (:,:,1,jl) = z0es (:,:,jl) * r1_e12t(:,:)
+            v_i  (:,:,jl)   = z0ice(:,:,jl) * r1_e12t(:,:) * tmask(:,:,1)
+            v_s  (:,:,jl)   = z0snw(:,:,jl) * r1_e12t(:,:) * tmask(:,:,1)
+            smv_i(:,:,jl)   = z0smi(:,:,jl) * r1_e12t(:,:) * tmask(:,:,1)
+            oa_i (:,:,jl)   = z0oi (:,:,jl) * r1_e12t(:,:) * tmask(:,:,1)
+            a_i  (:,:,jl)   = z0ai (:,:,jl) * r1_e12t(:,:) * tmask(:,:,1)
+            e_s  (:,:,1,jl) = z0es (:,:,jl) * r1_e12t(:,:) * tmask(:,:,1)
             DO jk = 1, nlay_i
-               e_i(:,:,jk,jl) = z0ei(:,:,jk,jl) * r1_e12t(:,:)
+               e_i(:,:,jk,jl) = z0ei(:,:,jk,jl) * r1_e12t(:,:) * tmask(:,:,1)
             END DO
          END DO
 
