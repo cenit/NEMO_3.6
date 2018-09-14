@@ -146,8 +146,8 @@ CONTAINS
 
       ! Output of initial vertical scale factor
       CALL iom_put("e3t_0", e3t_0(:,:,:) )
-      CALL iom_put("e3u_0", e3t_0(:,:,:) )
-      CALL iom_put("e3v_0", e3t_0(:,:,:) )
+      CALL iom_put("e3u_0", e3u_0(:,:,:) )
+      CALL iom_put("e3v_0", e3v_0(:,:,:) )
       !
       CALL iom_put( "e3t" , fse3t_n(:,:,:) )
       CALL iom_put( "e3u" , fse3u_n(:,:,:) )
